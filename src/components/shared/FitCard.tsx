@@ -7,7 +7,7 @@ export interface ExerciseCardProps {
 function FitCard({ exercise }: ExerciseCardProps) {
   return (
     <Link
-      href="/"
+      href={`/FitLogs/${exercise.id}`}
       className="group bg-[#12141c] border border-gray-800/80 hover:border-[#a3e635] rounded-2xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col w-full max-w-sm mx-auto cursor-pointer"
     >
       {/* Exercise Image Header */}
