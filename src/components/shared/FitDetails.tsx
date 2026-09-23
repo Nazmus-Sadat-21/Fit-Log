@@ -58,6 +58,7 @@ const FitDetails = ({ exercise }: ExerciseCardProps) => {
               </span>
             ))}
           </div>
+        
 
           {/* Specs Table */}
           <div className="bg-[#12141c] border border-gray-800/80 rounded-2xl overflow-hidden divide-y divide-gray-800/60 shadow-lg">
