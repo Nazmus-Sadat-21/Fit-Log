@@ -1,7 +1,6 @@
 import { Exercise } from "@/types/type";
 import Image from "next/image";
 import Link from "next/link";
-
 export interface ExerciseCardProps {
   exercise: Exercise;
 }
