@@ -45,7 +45,7 @@ export default function Navbar() {
               Workouts
             </Link>
             <Link
-              href="/"
+              href="/my-plan"
               onClick={() => setActiveTab("myplan")}
               className={`px-6 py-2 rounded-full text-sm font-extrabold transition-all duration-200 ${
                 isMyPlanActive
@@ -126,7 +126,7 @@ export default function Navbar() {
               Workouts
             </Link>
             <Link
-              href="/"
+              href="/my-plan"
               onClick={() => {
                 setActiveTab("myplan");
                 setIsMobileMenuOpen(false);

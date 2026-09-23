@@ -1,4 +1,4 @@
-import FitLogs from "@/components/FitLogs";
+import FitLogs from "@/components/FitLogsPage";
 import Banner from "@/components/shared/Banner";
 
 

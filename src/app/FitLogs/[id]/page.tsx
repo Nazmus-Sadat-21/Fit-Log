@@ -1,6 +1,7 @@
+import NotFound from "@/app/NotFound";
 import FitDetails from "@/components/shared/FitDetails";
 import { Exercise } from "@/types/type";
-import React from "react";
+
 export interface ExerciseCardProps {
   params: Promise<{
     id: string;
@@ -20,6 +21,12 @@ const page = async ({ params }: ExerciseCardProps) => {
   const FindFitLog = FitData.find(
     (data: Exercise) => String(data.id) === id,
   ) as Exercise;
+
+  if(FindFitLog == null){
+    return (
+      <NotFound></NotFound>
+    )
+  }
 
   return (
     <main className="min-h-screen bg-[#07080a]">

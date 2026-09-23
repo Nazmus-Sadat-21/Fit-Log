@@ -1,5 +1,7 @@
+import FitCard from "@/components/shared/FitCard";
 import { Exercise } from "@/types/type";
-import FitCard from "./shared/FitCard";
+import NotFound from "../NotFound";
+
 
 export interface ExerciseCardProps {
   exercise: Exercise[];
@@ -13,10 +15,14 @@ const data = async (): Promise<Exercise[]> => {
 
 const FitLogs = async () => {
   const FitData: Exercise[] = await data();
+  
+  if(FitData==null){
+    return <NotFound></NotFound>
+  }
 
   return (
     <>
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 bg-[#07080a] min-h-screen">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 bg-black min-h-screen">
         <div className="flex flex-col items-center text-center mb-10">
           <span className="inline-block bg-[#a3e635]/10 text-[#a3e635] border border-[#a3e635]/30 text-[11px] sm:text-xs font-black tracking-widest uppercase px-3.5 py-1 rounded-full mb-3">
             EXERCISE CATALOG
