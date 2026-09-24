@@ -15,7 +15,7 @@ const data = async (): Promise<Exercise[]> => {
   }
 
   const data = await response.json();
-  return data as Exercise[];
+  return data;
 };
 
 const FitLogs = async () => {

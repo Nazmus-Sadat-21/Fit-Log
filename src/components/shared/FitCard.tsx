@@ -53,7 +53,7 @@ function FitCard({ exercise }: ExerciseCardProps) {
           {/* Duration */}
           <div className="flex items-center gap-1.5">
             <svg
-              className="w-4 h-4 text-gray-400"
+              className="w-4 h-4 text-[#a3e635]"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -72,18 +72,19 @@ function FitCard({ exercise }: ExerciseCardProps) {
           {/* Calories Burned */}
           <div className="flex items-center gap-1.5">
             <svg
-              className="w-4 h-4 text-gray-400 fill-current"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 23c-4.97 0-9-3.58-9-8 0-3.5 2.5-6.5 5.5-8.5.5 2 2 3.5 3.5 3.5 1 0 2.5-.5 3.5-2 2.5 2.5 3.5 5.5 3.5 8 0 4.42-4.03 7-7 7z" />
-            </svg>
+                className="w-4 h-4 text-[#a3e635]"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 23c-4.97 0-9-3.58-9-8 0-4.19 3.25-7.79 6.25-10.79.41-.41 1.09-.41 1.5 0 .2.2.3.47.3.75 0 2.21 1.79 4 4 4s4-1.79 4-4c0-.28.1-.55.3-.75.41-.41 1.09-.41 1.5 0C18.75 7.21 22 10.81 22 15c0 4.42-4.03 8-9 8z" />
+              </svg>
             <span>{exercise.caloriesBurned} kcal</span>
           </div>
 
           {/* Rating */}
           <div className="flex items-center gap-1.5">
             <svg
-              className="w-4 h-4 text-gray-400"
+              className="w-4 h-4 text-[#a3e635]"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
