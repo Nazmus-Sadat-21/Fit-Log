@@ -25,6 +25,7 @@ export default function Navbar() {
           {/* Logo Section */}
           <div className="flex items-center gap-2">
             <Link
+              onClick={() => setActiveTab("workouts")}
               href="/"
               className="flex items-center gap-2 font-black text-2xl tracking-wider text-white"
             >
@@ -150,7 +151,7 @@ export default function Navbar() {
 
           {/* Mobile Badges */}
           <div className="flex items-center gap-6 pt-2 text-sm font-bold text-gray-300 border-t border-gray-800">
-            <Link href="/my-plan">
+            <Link href="/my-plan"  onClick={() => setActiveTab("myplan")}>
               <div className="flex items-center gap-2 cursor-pointer">
                 <span>Plan</span>
                 <span className="flex items-center justify-center bg-[#a3e635] text-black text-xs font-black w-6 h-6 rounded-full">
@@ -159,7 +160,7 @@ export default function Navbar() {
               </div>
             </Link>
 
-            <Link href="/my-plan">
+            <Link href="/my-plan"  onClick={() => setActiveTab("myplan")}>
               <div className="flex items-center gap-2 cursor-pointer">
                 <button className="cursor-pointer">Saved</button>
                 <span className="flex items-center justify-center bg-[#1e222d] text-gray-300 text-xs font-black w-6 h-6 rounded-full border border-gray-700">

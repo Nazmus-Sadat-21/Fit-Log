@@ -105,7 +105,7 @@ export default function MyPlanPage() {
           /* Cards View: Full-width stack with vertical gap */
           <div className="flex flex-col gap-4 w-full">
             {sortedList.map((exc, ind) => (
-              <Listcard key={exc.id || ind} exercise={exc} />
+              <Listcard key={exc.id || ind} exercise={exc} isButton={activeTab} />
             ))}
           </div>
         ) : (

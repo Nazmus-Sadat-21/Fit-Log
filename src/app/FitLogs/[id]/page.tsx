@@ -10,6 +10,11 @@ export interface ExerciseCardProps {
 
 const data = async (): Promise<Exercise[]> => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
   const data = await response.json();
   return data as Exercise[];
 };
@@ -22,10 +27,8 @@ const page = async ({ params }: ExerciseCardProps) => {
     (data: Exercise) => String(data.id) === id,
   ) as Exercise;
 
-  if(FindFitLog == null){
-    return (
-      <NotFound></NotFound>
-    )
+  if (FindFitLog == null) {
+    return <NotFound></NotFound>;
   }
 
   return (

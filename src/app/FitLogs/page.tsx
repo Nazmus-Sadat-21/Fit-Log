@@ -9,6 +9,11 @@ export interface ExerciseCardProps {
 
 const data = async (): Promise<Exercise[]> => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
   const data = await response.json();
   return data as Exercise[];
 };
