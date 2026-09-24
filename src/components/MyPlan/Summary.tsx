@@ -1,9 +1,11 @@
 import { FitLogContext } from "@/context/FitLogcontext";
+import { Exercise } from "@/types/type";
 import React, { useContext } from "react";
-
-const Summary = () => {
-    const {today} = useContext(FitLogContext)
-    const {save} = useContext(FitLogContext)
+export interface ExerciseCardProps {
+  exercise: Exercise[];
+}
+const Summary = ({exercise}:ExerciseCardProps) => {
+  
   return (
     <div className="bg-[#0e1017] border border-gray-800/80 rounded-2xl p-6 sm:p-8">
       <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-800/70 gap-6 md:gap-0">
@@ -13,7 +15,7 @@ const Summary = () => {
             Exercises
           </span>
           <span className="text-5xl sm:text-6xl font-black text-[#a3e635]">
-            2
+           {exercise.length}
           </span>
         </div>
 
@@ -22,7 +24,11 @@ const Summary = () => {
           <span className="text-xs sm:text-sm font-semibold text-gray-400 mb-2">
             Minutes
           </span>
-          <span className="text-5xl sm:text-6xl font-black text-white">23</span>
+          <span className="text-5xl sm:text-6xl font-black text-white">
+            {
+              exercise.reduce((total, item) => total + item.duration, 0)
+            }
+          </span>
         </div>
 
         {/* Calories Stat */}
@@ -31,7 +37,9 @@ const Summary = () => {
             Calories
           </span>
           <span className="text-5xl sm:text-6xl font-black text-white">
-            190
+            {
+              exercise.reduce((total, item) => total + item.caloriesBurned, 0)
+            }
           </span>
         </div>
       </div>

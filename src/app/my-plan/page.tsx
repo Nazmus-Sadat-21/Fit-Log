@@ -4,10 +4,13 @@ import Link from "next/link";
 import Summary from "@/components/MyPlan/Summary";
 import { FitLogContext } from "@/context/FitLogcontext";
 import Listcard from "@/components/MyPlan/Listcard";
+import { Exercise } from "@/types/type";
 
 export default function MyPlanPage() {
-  const { today } = useContext(FitLogContext);
-  const { save } = useContext(FitLogContext);
+  const { today, save } = useContext(FitLogContext) as {
+    today: Exercise[];
+    save: Exercise[];
+  };
 
   const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
   const [sortBy, setSortBy] = useState<string>("Duration");
@@ -38,7 +41,12 @@ export default function MyPlanPage() {
         </div>
 
         {/* Stats Summary Box */}
-        <Summary />
+      <div>
+        {
+         activeTab === "today" ? <Summary exercise={today} /> : <Summary exercise={save}  />
+        }
+      </div>
+        
 
         {/* Navigation Tabs & Sorting Controls */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -47,7 +55,7 @@ export default function MyPlanPage() {
           <div className="bg-[#12141c] border border-gray-800/80 p-1.5 rounded-2xl flex items-center">
             <button
               onClick={() => setActiveTab("today")}
-              className={`mr-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 ${
+              className={`cursor-pointer mr-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 ${
                 activeTab === "today"
                   ? "bg-[#a3e635] text-black shadow-lg shadow-[#a3e635]/20"
                   : "text-gray-400 hover:text-white hover:bg-gray-800/40"
@@ -57,7 +65,7 @@ export default function MyPlanPage() {
             </button>
             <button
               onClick={() => setActiveTab("saved")}
-              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 ${
+              className={`cursor-pointer px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 ${
                 activeTab === "saved"
                   ? "bg-[#a3e635] text-black shadow-lg shadow-[#a3e635]/20"
                   : "text-gray-400 hover:text-white hover:bg-gray-800/40"
