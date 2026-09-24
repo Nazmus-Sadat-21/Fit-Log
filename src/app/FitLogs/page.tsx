@@ -8,7 +8,7 @@ export interface ExerciseCardProps {
 }
 
 const data = async (): Promise<Exercise[]> => {
-  const response = await fetch("https://api.abcz.workers.dev/api/fitlog");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}`);
   const data = await response.json();
   return data as Exercise[];
 };

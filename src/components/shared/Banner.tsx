@@ -26,7 +26,7 @@ export default function Banner() {
 
           {/* CTA Button */}
           <Link
-            href="/workouts"
+            href="/FitLogs"
             className="mt-2 inline-block bg-[#a3e635] text-black font-extrabold px-6 py-3.5 rounded-md text-xs sm:text-sm tracking-wider uppercase hover:bg-[#8ee025] transition-colors duration-200 shadow-lg shadow-[#a3e635]/10"
           >
             BROWSE WORKOUTS

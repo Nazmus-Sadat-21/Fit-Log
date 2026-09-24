@@ -21,7 +21,7 @@ export default function MyPlanPage() {
   // 2. Sort the active list based on the dropdown choice
   const sortedList = [...rawList].sort((a, b) => {
     if (sortBy === "Duration") return (b.duration || 0) - (a.duration || 0);
-    if (sortBy === "Calories") return (b.caloriesBurned || b.calories || 0) - (a.caloriesBurned || a.calories || 0);
+    if (sortBy === "Calories") return (b.caloriesBurned || 0) - (a.caloriesBurned || 0);
     if (sortBy === "Rating") return (b.rating || 0) - (a.rating || 0);
     return 0;
   });
