@@ -1,6 +1,8 @@
 import { Exercise } from "@/types/type";
 import Image from "next/image";
 import React from "react";
+import TodayPlan from "../buttons/TodayPlan";
+import Save from "../buttons/Save";
 
 export interface ExerciseCardProps {
   exercise: Exercise;
@@ -96,31 +98,12 @@ const FitDetails = ({ exercise }: ExerciseCardProps) => {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-gray-800/60">
-            {/* Add to today's plan Button */}
-            <button className="bg-[#a3e635] hover:bg-[#8ee025] text-black font-extrabold text-xs sm:text-sm px-5 py-3 rounded-xl flex items-center gap-2.5 transition-all duration-200 shadow-lg shadow-[#a3e635]/10 active:scale-95">
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z" />
-              </svg>
-              <span>Add to today's plan</span>
-            </button>
-
+            {/* Add to today's plan Button */}       
+            <TodayPlan exercise = {exercise}></TodayPlan>
+            
             {/* Save for later Button */}
-            <button className="border border-gray-700/80 hover:border-gray-500 hover:bg-gray-800/40 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl flex items-center gap-2.5 transition-all duration-200 active:scale-95">
-              <svg
-                className="w-4 h-4 text-gray-300"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
-                />
-              </svg>
-              <span>Save for later</span>
-            </button>
+            <Save exercise = {exercise}></Save>
+          
           </div>
 
         </div>

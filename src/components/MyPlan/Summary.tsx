@@ -1,6 +1,9 @@
-import React from "react";
+import { FitLogContext } from "@/context/FitLogcontext";
+import React, { useContext } from "react";
 
 const Summary = () => {
+    const {today} = useContext(FitLogContext)
+    const {save} = useContext(FitLogContext)
   return (
     <div className="bg-[#0e1017] border border-gray-800/80 rounded-2xl p-6 sm:p-8">
       <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-800/70 gap-6 md:gap-0">

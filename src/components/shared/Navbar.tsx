@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { FitLogContext } from "@/context/FitLogcontext";
 
 export default function Navbar() {
+  const {today} = useContext(FitLogContext)
+  const {save} = useContext(FitLogContext)
   const pathname = usePathname();
   // Internal state as fallback for active active toggle
   const [activeTab, setActiveTab] = useState<"workouts" | "myplan">("workouts");
@@ -59,16 +62,16 @@ export default function Navbar() {
 
           {/* Right Badges Section */}
           <div className="hidden sm:flex items-center gap-6 text-sm font-bold text-gray-300">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer">
               <span>Plan</span>
               <span className="flex items-center justify-center bg-[#a3e635] text-black text-xs font-black w-6 h-6 rounded-full">
-                0
+                {today.length}
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer">
               <span>Saved</span>
               <span className="flex items-center justify-center bg-[#1e222d] text-gray-300 text-xs font-black w-6 h-6 rounded-full border border-gray-700">
-                0
+                {save.length}
               </span>
             </div>
           </div>
@@ -143,16 +146,16 @@ export default function Navbar() {
 
           {/* Mobile Badges */}
           <div className="flex items-center gap-6 pt-2 text-sm font-bold text-gray-300 border-t border-gray-800">
-            <div className="flex items-center gap-2">
-              <span>Plan</span>
+            <div className="flex items-center gap-2 cursor-pointer">
+              <span >Plan</span>
               <span className="flex items-center justify-center bg-[#a3e635] text-black text-xs font-black w-6 h-6 rounded-full">
-                0
+                {today.length}
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <span>Saved</span>
+            <div className="flex items-center gap-2 cursor-pointer">
+              <button className="cursor-pointer">Saved</button>
               <span className="flex items-center justify-center bg-[#1e222d] text-gray-300 text-xs font-black w-6 h-6 rounded-full border border-gray-700">
-                0
+                {save.length}
               </span>
             </div>
           </div>
