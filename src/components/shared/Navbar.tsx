@@ -11,7 +11,7 @@ export default function Navbar() {
   const { save } = useContext(FitLogContext);
   const pathname = usePathname();
   // Internal state as fallback for active active toggle
-  const [activeTab, setActiveTab] = useState<"workouts" | "myplan">("workouts");
+  const {activeTab, setActiveTab} = useContext(FitLogContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Sync with route or fallback to state

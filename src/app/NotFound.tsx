@@ -1,7 +1,11 @@
+"use client"
+import { FitLogContext } from '@/context/FitLogcontext';
 import Link from 'next/link';
 import React from 'react';
+import { useContext } from 'react';
 
 export default function NotFound() {
+  const {setActiveTab} = useContext(FitLogContext);
   return (
     <main className="min-h-screen bg-[#07080a] text-white flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-md w-full text-center flex flex-col items-center">
@@ -29,6 +33,7 @@ export default function NotFound() {
 
         {/* Action Button */}
         <Link
+         onClick={()=>setActiveTab("workouts")}
           href="/"
           className="bg-[#a3e635] hover:bg-[#8ee025] text-black font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-xl flex items-center justify-center gap-2.5 transition-all duration-200 shadow-lg shadow-[#a3e635]/10 active:scale-95"
         >

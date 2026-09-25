@@ -12,11 +12,13 @@ export default function MyPlanPage() {
     save: Exercise[];
   };
 
-  const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
+  const {setActiveTab} = useContext(FitLogContext);
+
+  const [PlanactiveTab, plansetActiveTab] = useState<"today" | "saved">("today");
   const [sortBy, setSortBy] = useState<string>("Duration");
 
 
-  const rawList = activeTab === "today" ? today || [] : save || [];
+  const rawList = PlanactiveTab === "today" ? today || [] : save || [];
 
   
    const sortedList =((Data:Exercise[]) => {
@@ -29,12 +31,13 @@ export default function MyPlanPage() {
     }
     else if (sortBy === "Rating"){
       list.sort((a,b)=>a.rating-b.rating)
-    }
-    
+    }    
     
     return list;
   });
+
   const newSortedList = sortedList(rawList);
+  
   return (
     <main className="min-h-screen bg-[#07080a] text-white px-4 sm:px-6 lg:px-8 py-10">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -52,7 +55,7 @@ export default function MyPlanPage() {
         {/* Stats Summary Box */}
       <div>
         {
-         activeTab === "today" ? <Summary exercise={today} /> : <Summary exercise={save}  />
+         PlanactiveTab === "today" ? <Summary exercise={today} /> : <Summary exercise={save}  />
         }
       </div>
         
@@ -60,12 +63,12 @@ export default function MyPlanPage() {
         {/* Navigation Tabs & Sorting Controls */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           
-          {/* Interactive Today's Plan / Saved Tab Switcher */}
+         
           <div className="bg-[#12141c] border border-gray-800/80 p-1.5 rounded-2xl flex items-center">
             <button
-              onClick={() => setActiveTab("today")}
+              onClick={() => plansetActiveTab("today")}
               className={`cursor-pointer mr-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 ${
-                activeTab === "today"
+                PlanactiveTab === "today"
                   ? "bg-[#a3e635] text-black shadow-lg shadow-[#a3e635]/20"
                   : "text-gray-400 hover:text-white hover:bg-gray-800/40"
               }`}
@@ -73,9 +76,9 @@ export default function MyPlanPage() {
               Today's Plan
             </button>
             <button
-              onClick={() => setActiveTab("saved")}
+              onClick={() => plansetActiveTab("saved")}
               className={`cursor-pointer px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 ${
-                activeTab === "saved"
+                PlanactiveTab === "saved"
                   ? "bg-[#a3e635] text-black shadow-lg shadow-[#a3e635]/20"
                   : "text-gray-400 hover:text-white hover:bg-gray-800/40"
               }`}
@@ -110,32 +113,30 @@ export default function MyPlanPage() {
 
         </div>
 
-        {/* Tab Content Area */}
         {newSortedList.length > 0 ? (
-          /* Cards View: Full-width stack with vertical gap */
           <div className="flex flex-col gap-4 w-full">
             {newSortedList.map((exc, ind) => (
-              <Listcard key={ind} exercise={exc} isButton={activeTab} />
+              <Listcard key={ind} exercise={exc} isButton={PlanactiveTab} />
             ))}
           </div>
         ) : (
-          /* Empty State View: Dashed container centered */
           <div className="bg-[#0e1017]/60 border border-dashed border-gray-800/90 rounded-3xl p-10 sm:p-20 flex flex-col items-center justify-center text-center min-h-[340px]">
             <h2 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white mb-2">
-              {activeTab === "today" ? "TODAY'S WORKOUT PLAN" : "NOTHING HERE YET"}
+              {PlanactiveTab === "today" ? "TODAY'S WORKOUT PLAN" : "NOTHING HERE YET"}
             </h2>
             
             <p className="text-gray-400 text-xs sm:text-sm max-w-sm mb-6">
-              {activeTab === "today"
+              {PlanactiveTab === "today"
                 ? "Complete your daily targets to hit your fitness goals."
                 : "Browse the library and add a lift to get today moving."}
             </p>
 
             <Link
+             onClick={()=>setActiveTab("workouts")}
               href="/"
               className="bg-[#a3e635] hover:bg-[#8ee025] text-black font-extrabold text-xs sm:text-sm px-6 py-3 rounded-full transition-all duration-200 shadow-lg shadow-[#a3e635]/10 active:scale-95"
             >
-              {activeTab === "today" ? "Start Workout" : "Go to workouts"}
+              {PlanactiveTab === "today" ? "Start Workout" : "Go to workouts"}
             </Link>
           </div>
         )}
