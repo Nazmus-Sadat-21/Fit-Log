@@ -1,12 +1,17 @@
+"use client"
+import { FitLogContext } from "@/context/FitLogcontext";
 import { Exercise } from "@/types/type";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 export interface ExerciseCardProps {
   exercise: Exercise;
 }
 function FitCard({ exercise }: ExerciseCardProps) {
+  const {setActiveTab } = useContext(FitLogContext);
   return (
     <Link
+    onClick={()=>setActiveTab("")}
       href={`/FitLogs/${exercise.id}`}
       className="group bg-[#12141c] border border-gray-800/80 hover:border-[#a3e635] rounded-2xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col w-full max-w-sm mx-auto cursor-pointer"
     >

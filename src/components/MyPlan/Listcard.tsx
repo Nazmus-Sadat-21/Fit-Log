@@ -109,7 +109,7 @@ const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
       <div className="flex items-center justify-end gap-2.5 sm:gap-3 pt-3 md:pt-0 border-t md:border-t-0 border-gray-800/60 flex-shrink-0">
         <Link
           href={`/FitLogs/${exercise.id}`}
-          onClick={() => setActiveTab("workouts")}
+          onClick={() => setActiveTab("")}
         >
           <span className="inline-block cursor-pointer border border-gray-700/80 hover:border-gray-500 hover:bg-gray-800/40 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap active:scale-95">
             View Details

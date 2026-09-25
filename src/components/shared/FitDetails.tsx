@@ -1,9 +1,7 @@
 import { Exercise } from "@/types/type";
 import Image from "next/image";
-import React from "react";
 import TodayPlan from "../buttons/TodayPlan";
 import Save from "../buttons/Save";
-
 export interface ExerciseCardProps {
   exercise: Exercise;
 }

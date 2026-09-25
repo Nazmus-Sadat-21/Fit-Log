@@ -24,13 +24,13 @@ export default function MyPlanPage() {
    const sortedList =((Data:Exercise[]) => {
     const list = [...Data] 
     if (sortBy === "Duration"){
-      list.sort((a,b)=>a.duration-b.duration)
+      list.sort((a,b)=>b.duration-a.duration)
     }
     else if (sortBy === "Calories"){
-      list.sort((a,b)=>a.caloriesBurned-b.caloriesBurned)
+      list.sort((a,b)=>b.caloriesBurned-a.caloriesBurned)
     }
     else if (sortBy === "Rating"){
-      list.sort((a,b)=>a.rating-b.rating)
+      list.sort((a,b)=>b.rating-a.rating)
     }    
     
     return list;
@@ -98,7 +98,6 @@ export default function MyPlanPage() {
                 onChange={(e) => setSortBy(e.target.value)}
                 className="appearance-none bg-[#12141c] border border-gray-800/80 text-white text-xs sm:text-sm font-bold py-2.5 pl-4 pr-10 rounded-xl focus:outline-none focus:border-[#a3e635] cursor-pointer"
               >
-                <option disabled={true}>Sort by</option>
                 <option value="Duration">Duration</option>
                 <option value="Calories">Calories</option>
                 <option value="Rating">Rating</option>

@@ -8,8 +8,8 @@ interface FitLogContextPrpos {
   setToday: React.Dispatch<React.SetStateAction<Exercise[]>>;
   save: Exercise[];
   setSave: React.Dispatch<React.SetStateAction<Exercise[]>>;
-  activeTab : "workouts" | "myplan";
-  setActiveTab : React.Dispatch<React.SetStateAction<"workouts" | "myplan">>;
+  activeTab : "workouts" | "myplan" | "";
+  setActiveTab : React.Dispatch<React.SetStateAction<"workouts" | "myplan" | "">>;
 }
 
 export const FitLogContext = createContext<FitLogContextPrpos>({
@@ -25,7 +25,7 @@ const FitLogProvider = ({children}:{children:ReactNode}) => {
 
     const [today,setToday] = useState<Exercise[]>([])
     const [save,setSave] = useState<Exercise[]>([])
-    const [activeTab,setActiveTab] = useState<"workouts" | "myplan">("workouts")
+    const [activeTab,setActiveTab] = useState<"workouts" | "myplan" | "">("workouts")
 
     const sharedData = {
         today,
