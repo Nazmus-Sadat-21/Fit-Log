@@ -15,17 +15,26 @@ export default function MyPlanPage() {
   const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
   const [sortBy, setSortBy] = useState<string>("Duration");
 
-  // 1. Select list based on active tab
+
   const rawList = activeTab === "today" ? today || [] : save || [];
 
-  // 2. Sort the active list based on the dropdown choice
-  const sortedList = [...rawList].sort((a, b) => {
-    if (sortBy === "Duration") return (b.duration || 0) - (a.duration || 0);
-    if (sortBy === "Calories") return (b.caloriesBurned || 0) - (a.caloriesBurned || 0);
-    if (sortBy === "Rating") return (b.rating || 0) - (a.rating || 0);
-    return 0;
+  
+   const sortedList =((Data:Exercise[]) => {
+    const list = [...Data] 
+    if (sortBy === "Duration"){
+      list.sort((a,b)=>a.duration-b.duration)
+    }
+    else if (sortBy === "Calories"){
+      list.sort((a,b)=>a.caloriesBurned-b.caloriesBurned)
+    }
+    else if (sortBy === "Rating"){
+      list.sort((a,b)=>a.rating-b.rating)
+    }
+    
+    
+    return list;
   });
-
+  const newSortedList = sortedList(rawList);
   return (
     <main className="min-h-screen bg-[#07080a] text-white px-4 sm:px-6 lg:px-8 py-10">
       <div className="max-w-7xl mx-auto space-y-8">
@@ -86,6 +95,7 @@ export default function MyPlanPage() {
                 onChange={(e) => setSortBy(e.target.value)}
                 className="appearance-none bg-[#12141c] border border-gray-800/80 text-white text-xs sm:text-sm font-bold py-2.5 pl-4 pr-10 rounded-xl focus:outline-none focus:border-[#a3e635] cursor-pointer"
               >
+                <option disabled={true}>Sort by</option>
                 <option value="Duration">Duration</option>
                 <option value="Calories">Calories</option>
                 <option value="Rating">Rating</option>
@@ -101,11 +111,11 @@ export default function MyPlanPage() {
         </div>
 
         {/* Tab Content Area */}
-        {sortedList.length > 0 ? (
+        {newSortedList.length > 0 ? (
           /* Cards View: Full-width stack with vertical gap */
           <div className="flex flex-col gap-4 w-full">
-            {sortedList.map((exc, ind) => (
-              <Listcard key={exc.id || ind} exercise={exc} isButton={activeTab} />
+            {newSortedList.map((exc, ind) => (
+              <Listcard key={ind} exercise={exc} isButton={activeTab} />
             ))}
           </div>
         ) : (

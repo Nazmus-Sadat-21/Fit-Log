@@ -3,7 +3,7 @@ import { FitLogContext } from "@/context/FitLogcontext";
 import { Exercise } from "@/types/type";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 
 export interface ExerciseCardProps {
@@ -13,7 +13,11 @@ export interface ExerciseCardProps {
 
 const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
   const { today, setToday, save, setSave } = useContext(FitLogContext);
-
+  const [mark, setmark] = useState<boolean>(false);
+ const handleMark = (e:boolean)=>{
+  setmark(e)
+  toast.success(`${exercise.name} is completed`)
+ }
   const onRemove = () => {
     if (isButton === "today") {
       if (today?.some((e) => String(e.id) === String(exercise.id))) {
@@ -110,9 +114,17 @@ const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
 
         {/* Mark as Done Button - Rendered ONLY if NOT saved */}
         {isButton === "today" && (
-          <button className="cursor-pointer bg-[#a3e635] hover:bg-[#8ee025] text-black font-extrabold text-xs sm:text-sm px-4 py-2 rounded-full flex items-center gap-1.5 transition-all duration-200 shadow-md shadow-[#a3e635]/10 whitespace-nowrap active:scale-95">
+          <button
+          disabled={mark}
+          onClick={()=>handleMark(true)}
+            className={` flex items-center gap-1.5 text-xs sm:text-sm font-extrabold px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap active:scale-95 ${
+              mark == false
+                ? "cursor-pointer bg-[#a3e635] hover:bg-[#8ee025] text-black shadow-md shadow-[#a3e635]/10 "
+                : "cursor-not-allowed bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 "
+            }`}
+          >
             <svg
-              className="w-4 h-4 text-black stroke-[3]"
+              className="w-4 h-4 stroke-[3]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -123,7 +135,7 @@ const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
                 d="M5 13l4 4L19 7"
               />
             </svg>
-            <span>Mark as Done</span>
+            <span>{mark ? "Completed" : "Mark as Done"}</span>
           </button>
         )}
 

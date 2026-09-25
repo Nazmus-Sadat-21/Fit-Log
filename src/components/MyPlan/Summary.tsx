@@ -1,6 +1,4 @@
-import { FitLogContext } from "@/context/FitLogcontext";
 import { Exercise } from "@/types/type";
-import React, { useContext } from "react";
 export interface ExerciseCardProps {
   exercise: Exercise[];
 }
