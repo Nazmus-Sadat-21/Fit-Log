@@ -13,12 +13,12 @@ export interface ExerciseCardProps {
 
 const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
   const { today, setToday, save, setSave } = useContext(FitLogContext);
-  const {setActiveTab} = useContext(FitLogContext);
+  const { setActiveTab } = useContext(FitLogContext);
   const [mark, setmark] = useState<boolean>(false);
- const handleMark = (e:boolean)=>{
-  setmark(e)
-  toast.success(`${exercise.name} is completed`)
- }
+  const handleMark = (e: boolean) => {
+    setmark(e);
+    toast.success(`${exercise.name} is completed`);
+  };
   const onRemove = () => {
     if (isButton === "today") {
       if (today?.some((e) => String(e.id) === String(exercise.id))) {
@@ -107,19 +107,19 @@ const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
 
       {/* Right Section: Action Controls */}
       <div className="flex items-center justify-end gap-2.5 sm:gap-3 pt-3 md:pt-0 border-t md:border-t-0 border-gray-800/60 flex-shrink-0">
-        <Link href={`/FitLogs/${exercise.id}`} onClick={()=>setActiveTab("workouts")}>
+        <Link
+          href={`/FitLogs/${exercise.id}`}
+          onClick={() => setActiveTab("workouts")}
+        >
           <span className="inline-block cursor-pointer border border-gray-700/80 hover:border-gray-500 hover:bg-gray-800/40 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap active:scale-95">
             View Details
           </span>
         </Link>
 
-
-
-        {/* Mark as Done Button - Rendered ONLY if NOT saved */}
         {isButton === "today" && (
           <button
-          disabled={mark}
-          onClick={()=>handleMark(true)}
+            disabled={mark}
+            onClick={() => handleMark(true)}
             className={` flex items-center gap-1.5 text-xs sm:text-sm font-extrabold px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap active:scale-95 ${
               mark == false
                 ? "cursor-pointer bg-[#a3e635] hover:bg-[#8ee025] text-black shadow-md shadow-[#a3e635]/10 "
@@ -142,7 +142,6 @@ const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
           </button>
         )}
 
-        {/* Delete / Dismiss Button */}
         <button
           onClick={onRemove}
           className="cursor-pointer p-1.5 sm:p-2 text-gray-400 hover:text-white transition-colors duration-200 rounded-lg hover:bg-gray-800/50"
@@ -168,7 +167,3 @@ const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
 };
 
 export default Listcard;
-
-
-
-

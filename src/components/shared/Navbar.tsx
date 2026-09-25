@@ -10,11 +10,10 @@ export default function Navbar() {
   const { today } = useContext(FitLogContext);
   const { save } = useContext(FitLogContext);
   const pathname = usePathname();
-  // Internal state as fallback for active active toggle
-  const {activeTab, setActiveTab} = useContext(FitLogContext);
+
+  const { activeTab, setActiveTab } = useContext(FitLogContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Sync with route or fallback to state
   const isWorkoutsActive = pathname === "/workouts" || activeTab === "workouts";
   const isMyPlanActive = pathname === "/my-plan" || activeTab === "myplan";
 
@@ -29,13 +28,11 @@ export default function Navbar() {
               href="/"
               className="flex items-center gap-2 font-black text-2xl tracking-wider text-white"
             >
-              {/* Dumbbell Icon */}
               <Image src="/logo.png" alt="logo" width={30} height={30}></Image>
               <span className="ml-[1px]">FITLOG</span>
             </Link>
           </div>
 
-          {/* Center Navigation Pill Container (Desktop & Tablet) */}
           <div className="hidden md:flex items-center bg-[#171a21] p-1.5 rounded-full border border-gray-800/80">
             <Link
               href="/"
@@ -61,7 +58,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Right Badges Section */}
           <div className="hidden sm:flex items-center gap-6 text-sm font-bold text-gray-300">
             <Link href="/my-plan" onClick={() => setActiveTab("myplan")}>
               <div className="flex items-center gap-2 cursor-pointer">
@@ -81,7 +77,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="flex md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -115,7 +110,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#12141c] border-b border-gray-800 px-4 pt-3 pb-6 space-y-4">
           <div className="flex flex-col gap-2">
@@ -149,9 +143,8 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Badges */}
           <div className="flex items-center gap-6 pt-2 text-sm font-bold text-gray-300 border-t border-gray-800">
-            <Link href="/my-plan"  onClick={() => setActiveTab("myplan")}>
+            <Link href="/my-plan" onClick={() => setActiveTab("myplan")}>
               <div className="flex items-center gap-2 cursor-pointer">
                 <span>Plan</span>
                 <span className="flex items-center justify-center bg-[#a3e635] text-black text-xs font-black w-6 h-6 rounded-full">
@@ -160,7 +153,7 @@ export default function Navbar() {
               </div>
             </Link>
 
-            <Link href="/my-plan"  onClick={() => setActiveTab("myplan")}>
+            <Link href="/my-plan" onClick={() => setActiveTab("myplan")}>
               <div className="flex items-center gap-2 cursor-pointer">
                 <button className="cursor-pointer">Saved</button>
                 <span className="flex items-center justify-center bg-[#1e222d] text-gray-300 text-xs font-black w-6 h-6 rounded-full border border-gray-700">

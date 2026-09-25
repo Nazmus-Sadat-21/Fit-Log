@@ -52,7 +52,7 @@ export default function MyPlanPage() {
           </p>
         </div>
 
-        {/* Stats Summary Box */}
+        
       <div>
         {
          PlanactiveTab === "today" ? <Summary exercise={today} /> : <Summary exercise={save}  />
@@ -60,7 +60,7 @@ export default function MyPlanPage() {
       </div>
         
 
-        {/* Navigation Tabs & Sorting Controls */}
+        
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           
          

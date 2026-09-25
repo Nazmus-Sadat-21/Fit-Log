@@ -9,7 +9,6 @@ export interface ExerciseCardProps {
 }
 
 const FitDetails = ({ exercise }: ExerciseCardProps) => {
-  // Construct specs array directly from the exercise JSON object
   const specs = [
     { label: "EQUIPMENT", value: exercise.equipment },
     { label: "DIFFICULTY", value: exercise.difficulty },
@@ -23,8 +22,6 @@ const FitDetails = ({ exercise }: ExerciseCardProps) => {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 bg-[#07080a] text-white">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        
-        {/* Left Side: Exercise Media Preview */}
         <div className="lg:col-span-6 w-full relative aspect-square sm:aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden bg-[#12141c] border border-gray-800/80 shadow-2xl">
           <Image
             src={exercise.image}
@@ -36,10 +33,7 @@ const FitDetails = ({ exercise }: ExerciseCardProps) => {
           />
         </div>
 
-        {/* Right Side: Details & Actions */}
         <div className="lg:col-span-6 flex flex-col gap-6">
-          
-          {/* Header & Title */}
           <div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight">
               {exercise.name}
@@ -49,7 +43,6 @@ const FitDetails = ({ exercise }: ExerciseCardProps) => {
             </p>
           </div>
 
-          {/* Muscle Group Badges */}
           <div className="flex flex-wrap gap-2">
             {exercise.muscleGroups?.map((muscle, idx) => (
               <span
@@ -60,9 +53,7 @@ const FitDetails = ({ exercise }: ExerciseCardProps) => {
               </span>
             ))}
           </div>
-        
 
-          {/* Specs Table */}
           <div className="bg-[#12141c] border border-gray-800/80 rounded-2xl overflow-hidden divide-y divide-gray-800/60 shadow-lg">
             {specs.map((item, idx) => (
               <div
@@ -79,7 +70,6 @@ const FitDetails = ({ exercise }: ExerciseCardProps) => {
             ))}
           </div>
 
-          {/* Instructions Section */}
           <div className="mt-2">
             <h2 className="text-lg font-black uppercase tracking-wider text-white mb-3">
               INSTRUCTIONS
@@ -96,18 +86,13 @@ const FitDetails = ({ exercise }: ExerciseCardProps) => {
             </ol>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-gray-800/60">
-            {/* Add to today's plan Button */}       
-            <TodayPlan exercise = {exercise}></TodayPlan>
-            
-            {/* Save for later Button */}
-            <Save exercise = {exercise}></Save>
-          
+            {/* Add to today's plan Button */}
+            <TodayPlan exercise={exercise}></TodayPlan>
+
+            <Save exercise={exercise}></Save>
           </div>
-
         </div>
-
       </div>
     </section>
   );

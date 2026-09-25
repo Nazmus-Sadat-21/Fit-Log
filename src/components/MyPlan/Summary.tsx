@@ -2,8 +2,7 @@ import { Exercise } from "@/types/type";
 export interface ExerciseCardProps {
   exercise: Exercise[];
 }
-const Summary = ({exercise}:ExerciseCardProps) => {
-  
+const Summary = ({ exercise }: ExerciseCardProps) => {
   return (
     <div className="bg-[#0e1017] border border-gray-800/80 rounded-2xl p-6 sm:p-8">
       <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-800/70 gap-6 md:gap-0">
@@ -13,19 +12,16 @@ const Summary = ({exercise}:ExerciseCardProps) => {
             Exercises
           </span>
           <span className="text-5xl sm:text-6xl font-black text-[#a3e635]">
-           {exercise.length}
+            {exercise.length}
           </span>
         </div>
 
-        {/* Minutes Stat */}
         <div className="md:px-8 pt-4 md:pt-0 flex flex-col justify-center">
           <span className="text-xs sm:text-sm font-semibold text-gray-400 mb-2">
             Minutes
           </span>
           <span className="text-5xl sm:text-6xl font-black text-white">
-            {
-              exercise.reduce((total, item) => total + item.duration, 0)
-            }
+            {exercise.reduce((total, item) => total + item.duration, 0)}
           </span>
         </div>
 
@@ -35,9 +31,7 @@ const Summary = ({exercise}:ExerciseCardProps) => {
             Calories
           </span>
           <span className="text-5xl sm:text-6xl font-black text-white">
-            {
-              exercise.reduce((total, item) => total + item.caloriesBurned, 0)
-            }
+            {exercise.reduce((total, item) => total + item.caloriesBurned, 0)}
           </span>
         </div>
       </div>
