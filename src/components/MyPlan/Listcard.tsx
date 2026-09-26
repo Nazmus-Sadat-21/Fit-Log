@@ -41,7 +41,7 @@ const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
 
   return (
     <div className="w-full bg-[#0e1017] border border-gray-800/80 hover:border-gray-700/80 rounded-2xl p-3.5 sm:p-4 md:p-5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 transition-all duration-200 shadow-xl">
-      {/* Left Section: Thumbnail & Info */}
+      
       <div className="flex items-center gap-3.5 sm:gap-5 flex-1 min-w-0">
         <div className="relative w-24 h-16 sm:w-28 sm:h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#181a24] border border-gray-800/90">
           <Image
@@ -121,7 +121,7 @@ const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
             disabled={mark}
             onClick={() => handleMark(true)}
             className={` flex items-center gap-1.5 text-xs sm:text-sm font-extrabold px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap active:scale-95 ${
-              mark == false
+              mark === false
                 ? "cursor-pointer bg-[#a3e635] hover:bg-[#8ee025] text-black shadow-md shadow-[#a3e635]/10 "
                 : "cursor-not-allowed bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 "
             }`}
@@ -143,7 +143,7 @@ const Listcard = ({ exercise, isButton }: ExerciseCardProps) => {
         )}
 
         <button
-          onClick={onRemove}
+          onClick={()=>onRemove()}
           className="cursor-pointer p-1.5 sm:p-2 text-gray-400 hover:text-white transition-colors duration-200 rounded-lg hover:bg-gray-800/50"
           aria-label="Remove item"
         >

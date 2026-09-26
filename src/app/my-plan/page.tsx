@@ -115,7 +115,7 @@ export default function MyPlanPage() {
         {newSortedList.length > 0 ? (
           <div className="flex flex-col gap-4 w-full">
             {newSortedList.map((exc, ind) => (
-              <Listcard key={ind} exercise={exc} isButton={PlanactiveTab} />
+              <Listcard key={exc.id} exercise={exc} isButton={PlanactiveTab} />
             ))}
           </div>
         ) : (
